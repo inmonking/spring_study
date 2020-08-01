@@ -12,6 +12,7 @@ public class MemberController {
 	@RequestMapping("test")
 	public ModelAndView test() {
 		System.out.println("테스트");
+		System.out.println("테스트2");
 		mv.setViewName("member/test");
 		return mv;
 	}
