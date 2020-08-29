@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.sist.wify">
+	<logger name="com.leehi_pro.leehi_pro">
 		<level value="info" />
 	</logger>
 	
