@@ -10,13 +10,13 @@
 	<!-- 총 게시글 카운트 -->
 <!-- 	<select id="getArticleCount" parameterType="string"
 		resultType="int">
-		select nvl(count(*),0) from board where boardid =
+		select coalesce(count(*),0) from board where boardid =
 		#{boardid}
 	</select> -->
 	
 	
 	<select id="sh_ReadCount" resultType="int">
-	select nvl(count(*),0) from team_qna
+	select coalesce(count(*),0) from team_qna
 	</select>
 	
 
@@ -60,12 +60,12 @@
 	
 	<!-- 새글 등록 글번호 카운트? -->
 <!-- 	<select id="insertArticle_new" resultType="int">
-		select nvl(max(num),0) from
+		select coalesce(max(num),0) from
 		board
 	</select> -->
 	
 	<select id="insertQnA_new" resultType="int">
-	select nvl(max(num),0) from team_QnA	
+	select coalesce(max(num),0) from team_QnA	
 	</select>
 	
 		
@@ -214,4 +214,18 @@
 	
 	
 	<!-- 상희 끝 -->
+	
+	 <select id="findTable" parameterType="String" resultType="int">
+	      SELECT
+	         count(*) AS CNT
+	      FROM
+	         information_schema.tables
+	      WHERE
+	         table_schema='public' 
+	         AND table_name=#{table_name}
+	   </select>
+	   
+	   <select id="createQuery" parameterType="map">
+	      ${create_query}
+	   </select>
 </mapper>
