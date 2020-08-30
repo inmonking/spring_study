@@ -28,6 +28,7 @@
 	<mappers>
 		
 		<mapper resource="mybatis/mybatis_mapper.xml" />
+		
 	</mappers>
 
 

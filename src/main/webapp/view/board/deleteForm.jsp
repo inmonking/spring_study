@@ -14,7 +14,7 @@
               <div class="panel-heading">
                     <div class="row">
                       <div class="col-lg-8 col-lg-offset-2 detailed mt">
-                        <h3 class="mb" align="center">QnA 글삭제</h3>
+                        <h3 class="mb" align="center">글삭제</h3>
                         <hr>
                         <form method="post" name="writeform" action="${project }/board/deletePro" class="form-horizontal" style="margin: 0 auto; width:400px;">
                           <input type="hidden" name="num" value="${num }">

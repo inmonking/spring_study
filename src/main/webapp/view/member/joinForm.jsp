@@ -33,7 +33,7 @@ function join() {
                         <h3 class="mb" align="center">회원가입</h3>
                         <hr>
 
-                        <form class="form-horizontal"  name="joinform" action="joinPro" style="margin: 0 auto; width:250px;" onsubmit="return join();" method="post">
+                        <form class="form-horizontal" name="joinform" action="joinPro" style="margin: 0 auto; width:250px;" onsubmit="return join();">
                           <div class="form-group" >
                             <label class="col-lg-2 control-label" >ID</label>
                             <div class="col-lg-6" style="width: 100%;">

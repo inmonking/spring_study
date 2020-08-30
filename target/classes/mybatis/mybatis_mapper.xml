@@ -7,53 +7,140 @@
 <!-- 상희 시작 -->
 
 <!-- id:BoardDBBeanMybatis에 메소드명 /parameterType: #{boardid}의 타입 / resultType: select가 받는 타입 (*는 전체이기 때문에 mybatis_config.xml에 있는 alias="Board"(model.BoardDataBean)를 가져온다.) -->
-	
 	<!-- 총 게시글 카운트 -->
+<!-- 	<select id="getArticleCount" parameterType="string"
+		resultType="int">
+		select nvl(count(*),0) from board where boardid =
+		#{boardid}
+	</select> -->
+	
+	
 	<select id="sh_ReadCount" resultType="int">
 	select nvl(count(*),0) from team_qna
 	</select>
+	
 
 	<!-- 글 리스트 -->
+<!-- 	<select id="getArticles" parameterType="hashmap"
+		resultType="Board">
+		select * from
+		(select rownum rnum, a.*
+		from (select num,
+		writer, email, subject, passwd, reg_date,readcount, ref, re_step,
+		re_level, content, ip, filename from board where boardid =
+		#{boardid}  order by ref desc, re_step) a ) where rnum between #{start}
+		and #{end}
+	</select> -->
+	
+	
 	<select id="QnAList" parameterType="hashmap" resultType="board">
 	select * from (select rownum  rnum, a.* from (select num, cat_name, writer,
 	subject, password, reg_date, readcount, ref, re_step, re_level, content
 	from team_qna order by ref desc, re_step) a ) where rnum between #{start} and #{end}
 	</select>
+	
+	
+	
+	
+	
+	
+	
 
 	<!-- 글 내용 보기 -->
+<!-- 	<select id="getArticle" parameterType="hashmap"
+		resultType="Board">
+		select * from board where num = #{num}
+	</select> -->
+	
+
 	<select id="getQnA" parameterType="hashmap" resultType="Board">
 	select * from team_QnA where num = #{num}
 	</select>
+
 	
 	<!-- 새글 등록 글번호 카운트? -->
+<!-- 	<select id="insertArticle_new" resultType="int">
+		select nvl(max(num),0) from
+		board
+	</select> -->
+	
 	<select id="insertQnA_new" resultType="int">
 	select nvl(max(num),0) from team_QnA	
 	</select>
+	
+		
 
 	<!-- 답글 등록 -->
+<!-- 	<update id="insertArticle_update" parameterType="hashmap">
+		update board set
+		re_step=re_step+1 where ref= #{ref} and re_step> #{re_step}
+	</update> -->
+	
+	
 	<update id="insertQnA_update" parameterType="hashmap">
 	update team_QnA set re_step=re_step+1 where ref= #{ref} and re_step #{re_step}
 	</update>
+	
 
 	<!-- 새글 등록 -->
+<!-- 	<insert id="insertArticle_insert" parameterType="Board">
+		insert into
+		board values
+		(#{num},#{boardid}
+		,#{writer},#{email},#{subject},#{passwd},sysdate,0,
+		#{ref},#{re_step},#{re_level},#{content},#{ip}, #{filename},
+		#{filesize})
+	</insert> -->
+	
+	
 	<insert id="insertQnA_insert" parameterType="Board">
 	insert into team_QnA values(#{num}, #{cat_name}, #{writer}, #{subject}, 
 	#{password}, sysdate, 0, #{ref}, #{re_step}, #{re_level}, #{content})
 	</insert>
 	
+	
+	
 	<!-- 글 삭제, 수정시 비밀번호 검사 -->
-	<select id="update_password" parameterType="hashmap"
+<!-- 	<select id="update_passwd" parameterType="hashmap"
+		resultType="string">
+		select passwd from board where num =#{num}
+	</select> -->
+	
+	
+	<select id="update_passwrod" parameterType="hashmap"
 		resultType="string">
 		select password from team_QnA where num =#{num}
 		</select>
+	
+	
+	
+	
+	
 
 	<!-- 글내용 볼때 조회수 카운트 됨 -->
+<!-- 	<update id="update_readcount" parameterType="hashmap">
+		update board set
+		readcount=readcount+1 where num = #{num}
+	</update> -->
+	
 	<update id="QnAupdate_readcount" parameterType="hashmap">
 	update team_QnA set
 		readcount=readcount+1 where num = #{num}
 	</update>
 
+
 	<!-- 글 수정 -->
+<!-- 	<update id="update_update" parameterType="hashmap">
+		update board set
+		writer=#{writer},
+		email=#{email},
+		subject=#{subject},
+		passwd=#{passwd},
+		content=#{content}
+		where num=#{num}
+	</update> -->
+	
+	
  	<update id="QnAup_update" parameterType="hashmap">
  	update team_QnA set
  	subject=#{subject},
@@ -61,11 +148,19 @@
  	where num = #{num}
  	</update>
 	
+
+
 	<!-- 글삭제 -->
+<!-- 	<select id="delete" parameterType="hashmap">
+		delete from board where num =
+		#{num}
+	</select> -->
+	
 	<select id="QnAdelete" parameterType="hashmap">
 	delete From team_QnA where num= #{num}
 	</select> 
-
+	
+	
 	
 	
 <!-- id:TeamMemberDBBeanMybatis에 메소드명 /parameterType: #{password}의 (오라클테이블)타입 / resultType: select가 받는 타입 (*는 전체이기 때문에 mybatis_config.xml에 있는 alias="Board"(model.BoardDataBean)를 가져온다.) -->
@@ -78,16 +173,19 @@
 		select password from team_member where id=#{id} and password=#{password}
 	</select>
 
+		
 	<!-- 회원가입 -->
 	<insert id="sh_insert" parameterType="Member">
 	insert into team_member values (#{id}, #{password}, #{gender}, #{name}, #{email}, #{phone})
 	</insert>
 		
+	
 	<!-- 회원정보 페이지 -->
 	<select id="memPage" parameterType="hashmap" resultType="Member">
 	select * from team_member where id = #{id}
 	</select>
 
+	
 	<!-- 회원정보 수정 --> 	
  	<update id="up_memPage" parameterType="hashmap">
  	update team_member set
@@ -97,17 +195,23 @@
  	where id = #{id}
  	</update>
  	
+
 	<!-- 회원 탈퇴 -->
 	<select id="memdelete" parameterType="hashmap">
-	delete from team_member where id = #{id}
+	delete from team_member where in=#{id}
 	</select>
+	
 	
 	<!-- 비밀번호 검사 -->
 	<select id="memCheckPasswd" parameterType="hashmap"
 		resultType="string">
 		select password from team_member where id =#{id}
 		</select>
-
+	
+	
+	
+	
+	
 	
 	<!-- 상희 끝 -->
 </mapper>

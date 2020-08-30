@@ -17,7 +17,7 @@
                     <div class="row">
                     
                       <div class="col-lg-8 col-lg-offset-2 detailed mt">
-                        <h3 class="mb" align="center">QnA</h3>
+                        <h3 class="mb" align="center">QnA 작성하기</h3>
                         <hr>
                         <form class="form-horizontal"  action="writePro" style="margin: 0 auto; width:400px;">
                           <input type="hidden" name="num" value="${QnAcontent.num}">

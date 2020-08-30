@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import model.TeamBoardDataBean;
+import model.c_BoardDataBean;
 import mybatis.MyBatisConnector;
 
 @Service
@@ -128,7 +129,7 @@ public class TeamBoardDBBeanMybatis {
 		map.put("num", upQnAPro.getNum());
 		int x = -1;
 		try {
-			String dbpasswd = (String) sqlSession.selectOne(namespace + ".update_password", map);
+			String dbpasswd = (String) sqlSession.selectOne(namespace + ".update_passwrod", map);
 			if (dbpasswd.equals(upQnAPro.getPassword())) {
 				x = sqlSession.update(namespace + ".QnAup_update", upQnAPro);
 			}
@@ -148,7 +149,7 @@ public class TeamBoardDBBeanMybatis {
 		map.put("num", num);
 		int x = -1;
 		try {
-			String dbpasswd = (String) sqlSession.selectOne(namespace + ".update_password", map);
+			String dbpasswd = (String) sqlSession.selectOne(namespace + ".update_passwrod", map);
 			if (dbpasswd.equals(passwd)) {
 				x = sqlSession.delete(namespace + ".QnAdelete", map);
 			}

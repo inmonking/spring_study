@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>QnA글삭제</title>
+<title>Insert title here</title>
 </head>
 <body>
 <c:if test="${check==1}">
 <meta http-equiv="Refresh" 
-content="0;url=${project }/board/list?pageNum=${pageNum}" ></c:if>
+content="0;url=<%=request.getContextPath() %>/board/list?pageNum=${pageNum}" ></c:if>
 <c:if test="${check!=1}">
       <script language="JavaScript">      
         alert("비밀번호가 맞지 않습니다");

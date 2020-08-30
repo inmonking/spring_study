@@ -25,6 +25,13 @@ public class TeamBoardController {
 	@Autowired
 	public TeamBoardDBBeanMybatis teamBoardDBBeanMybatis;
 
+	// board/test 테스트
+	@RequestMapping("test")
+	public ModelAndView test() {
+		mv.setViewName("board/test");
+		return mv;
+	}
+
 	// 게시글 페이지를 넘기는거
 	@ModelAttribute
 	public void setAttPageNum(HttpServletRequest pageNumreq) {

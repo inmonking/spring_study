@@ -7,6 +7,7 @@ public class TeamMemberDataBean {
 	private String name;
 	private String email;
 	private String phone;
+	
 	public String getId() {
 		return id;
 	}
@@ -43,12 +44,12 @@ public class TeamMemberDataBean {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
 	@Override
 	public String toString() {
 		return "TeamMemberDataBean [id=" + id + ", password=" + password + ", gender=" + gender + ", name=" + name
 				+ ", email=" + email + ", phone=" + phone + "]";
-	}
-	
+	}	
 	
 	
 	

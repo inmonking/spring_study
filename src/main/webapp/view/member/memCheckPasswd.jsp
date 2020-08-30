@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
 <div class="row mt">
           <!-- /col-lg-12 -->
           <div class="col-lg-12 mt" >
@@ -16,13 +14,13 @@
               <div class="panel-heading">
                     <div class="row">
                       <div class="col-lg-8 col-lg-offset-2 detailed mt">
-                        <h3 class="mb" align="center">회원정보</h3>
+                        <h3 class="mb" align="center">회원정보 보기</h3>
                         <hr>
-                        <form class="form-horizontal" name="memCheckPasswd" action="memCheckPasswdPro" style="margin: 0 auto; width:400px;" method="post">
+                        <form class="form-horizontal"  action="memberPage" style="margin: 0 auto; width:400px;">
                           <div class="form-group">
                             <label class="col-lg-2 control-label" style="width: 100%;">비밀번호</label>
                             <div class="col-lg-6" style="width: 100%;">
-                              <input type="password"  name="passwd" class="form-control" id="passwd" required="required">
+                              <input type="password"  name="passwd" class="form-control" required="required">
                             </div>
                           </div>
                             <div class="col-lg-offset-2 col-lg-10" style="margin-left: 120px;">

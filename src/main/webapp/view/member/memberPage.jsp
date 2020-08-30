@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-       <div class="row mt">
+
+
+        <div class="row mt">
 
           <!-- /col-lg-12 -->
           <div class="col-lg-12 mt" >
@@ -20,7 +21,7 @@
                         <h3 class="mb" align="center">회원정보</h3>
                         <hr>
 
-                        <form class="form-horizontal" name="memberPage" action="upmember" style="margin: 0 auto; width:250px;" method="post">
+                        <form class="form-horizontal" name="memberPage" action="upmember" style="margin: 0 auto; width:250px;">
                           <div class="form-group" >
                             <label class="col-lg-2 control-label" >ID</label>
                             <div class="col-lg-6" style="width: 100%;">
@@ -28,28 +29,20 @@
                             </div>
                           </div>
 
-
-						
-						<div class="form-group">
+     <%--    성별 선택 되게 하는거 찾아보기                  
+                          <div class="form-group">
                             <label class="col-lg-2 control-label" >GENDER</label>
-                         	<div class="col-lg-6" style="width: 100%;" >
-                         	<c:choose>
-                         		<c:when test="${memPage.gender eq 'f' }">
-                         		&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" disabled="disabled" value="f" id="f" checked="checked">여성  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              <input type="radio" name="gender" value="m"disabled="disabled" id="m">남성
-                         		</c:when>
-                         		<c:otherwise>
-                         		&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="f"disabled="disabled" id="f" >여성  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              <input type="radio" name="gender" value="m" disabled="disabled"id="m" checked="checked">남성
-                         		</c:otherwise>
-                         	</c:choose>
+                         <div class="col-lg-6" style="width: 100%;" >
+                              &nbsp;&nbsp;&nbsp;
+                              <input type="text" name="gender" value="${ memPage.gender }" >
                           </div>
                           </div>
+                           --%>
                           
                           <div class="form-group">
                             <label class="col-lg-2 control-label" >NAME</label>
                             <div class="col-lg-6" style="width: 100%;">
-                              <input type="text"  name="name" class="form-control" value="${memPage.name }" readonly="readonly">
+                              <input type="text"  name="name" class="form-control" value="${ memPage.name }" readonly="readonly">
                             </div>
                           </div>
                           <div class="form-group">

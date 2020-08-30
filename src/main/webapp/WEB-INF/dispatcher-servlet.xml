@@ -23,11 +23,22 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
    <mvc:resources mapping="/Dashio/**" location="/Dashio/" />
+   <mvc:resources mapping="/global-master/**" location="/global-master/" />
    
    <context:component-scan base-package="controller, service" />
    
    <bean class="mybatis.MyBatisConnector"/>
-
+   
+   
+   
+   
+<!--    <mvc:resources mapping="/images/**"
+		location="/fileSave/" cache-period="60" />
+	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8" />
+	</bean> -->
   
 
 

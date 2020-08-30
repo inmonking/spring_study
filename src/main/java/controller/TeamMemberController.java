@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.TeamMemberDataBean;
@@ -28,6 +27,19 @@ public class TeamMemberController {
 	@Autowired
 	public TeamMemberDBBeanMybatis teamMemberDBBeanMybatis;
 
+	// 테스트
+	@RequestMapping("test")
+	public ModelAndView test() {
+		mv.setViewName("member/test");
+		return mv;
+	}
+
+	/*
+	 * @ModelAttribute public void setAtt(String id, HttpServletRequest req) {
+	 * HttpSession session = req.getSession(); req.getParameter("memberid");
+	 * session.setAttribute("memberid", id); }
+	 */
+
 	// 로그인
 	@RequestMapping("login")
 	public ModelAndView login(String id, String passwd) throws Exception {
@@ -37,12 +49,12 @@ public class TeamMemberController {
 	}
 
 	@RequestMapping("loginPro")
-	public ModelAndView loginPro(String id, String passwd, HttpServletRequest req,HttpSession session) throws Exception {
+	public ModelAndView loginPro(String id, String passwd, HttpServletRequest req) throws Exception {
 		System.out.println(id + ":" + passwd);
 		HashMap error = teamMemberDBBeanMybatis.login_check(id, passwd);
 		if (error.isEmpty()) {
 			mv.setViewName("redirect:/index");
-			session.setAttribute("id", id);
+			req.getSession().setAttribute("id", id);
 		} else {
 			mv.addObject("error", error);
 			mv.setViewName("member/loginForm");
@@ -88,19 +100,17 @@ public class TeamMemberController {
 	@RequestMapping("memCheckPasswd")
 	public ModelAndView memCheckPasswd(String id, String passwd) throws Exception {
 		mv.clear();
-		
 		mv.setViewName("member/memCheckPasswd");
 		return mv;
 	}
 
 
 	@RequestMapping("memCheckPasswdPro")
-	public ModelAndView memCheckPasswd(String id, String passwd, HttpServletRequest req,HttpSession session) throws Exception {
+	public ModelAndView memCheckPasswd(String id, String passwd, HttpServletRequest req) throws Exception {
 		System.out.println("-------------memCheckPasswd");
-		id = (String) session.getAttribute("id");
 		HashMap error = teamMemberDBBeanMybatis.memPagePasswd(id, passwd);
 		if (error.isEmpty()) {
-			mv.setViewName("redirect:/member/memberPage");
+			mv.setViewName("redirect:/memberPage");
 			req.getSession().setAttribute("id", id);
 		} else {
 			mv.addObject("error", error);
@@ -116,11 +126,10 @@ public class TeamMemberController {
 	// (String id) 말고 HttpServletReq~로 id를 받아서 해도 됨
 	// 회원정보수정버튼를 클릭했을 때 url에 ${id}를 받아도 됨
 	@RequestMapping("memberPage")
-	public ModelAndView getmember(String id,HttpSession session) throws Exception {
+	public ModelAndView getmember(String id) throws Exception {
 
 		mv.clear();
-		
-		id = (String) session.getAttribute("id");
+
 		TeamMemberDataBean memPage = teamMemberDBBeanMybatis.memPage(id);
 		mv.addObject("memPage", memPage);
 		mv.setViewName("member/memberPage");
@@ -130,11 +139,10 @@ public class TeamMemberController {
 
 	// 회원정보 수정
 	@RequestMapping("upmember")
-	public ModelAndView upMember(String id, HttpSession session) throws Exception {
-		
+	public ModelAndView upMember(String id) throws Exception {
+
 		mv.clear();
-		
-		id=(String) session.getAttribute("id");
+
 		TeamMemberDataBean upMem = teamMemberDBBeanMybatis.memPage(id);
 		mv.addObject("upMem", upMem);
 		mv.setViewName("member/upmemPage");
@@ -149,7 +157,7 @@ public class TeamMemberController {
 
 		int check = teamMemberDBBeanMybatis.upMemberPro(upMemPro);
 		mv.addObject("check", check);
-		mv.setViewName("redirect:/member/memberPage");
+		mv.setViewName("member/memberPage");
 
 		return mv;
 	}
@@ -159,24 +167,22 @@ public class TeamMemberController {
 	public ModelAndView memdelete(String id) throws Exception {
 
 		mv.clear();
-		
+
 		mv.addObject("id", id);
 		mv.setViewName("member/deleteForm");
-		System.out.println("-------controllerdelete");
+
 		return mv;
-		
 	}
 
 	@RequestMapping("deletePro")
-	ModelAndView deletePro(String id, String passwd, HttpSession session) throws Exception {
+	ModelAndView deletePro(String id) throws Exception {
 
 		mv.clear();
-		
-		id = (String) session.getAttribute("id");
+
 		int check = teamMemberDBBeanMybatis.memDelete(id, password);
 		mv.addObject("check", check);
-		mv.setViewName("member/deletePro");
-		System.out.println("-------controllerdeletePro");
+		mv.setViewName("index");
+		
 		return mv;
 	}
 

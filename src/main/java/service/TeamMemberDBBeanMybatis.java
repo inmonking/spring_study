@@ -79,7 +79,7 @@ public class TeamMemberDBBeanMybatis {
 		HashMap<String, Boolean> error = new HashMap<String, Boolean>();
 		try {
 			String password = sqlSession.selectOne(namespace + ".memCheckPasswd", map);
-			if (!password.equals(passwd)) {
+			if (password == null) {
 				error.put("passwd", Boolean.TRUE);
 			}
 			return error;
@@ -115,9 +115,9 @@ public class TeamMemberDBBeanMybatis {
 		int x = -1;
 		try {
 			String dbpasswd = (String) sqlSession.selectOne(namespace + ".memCheckPasswd", map);
-			
-			x = sqlSession.update(namespace + ".up_memPage", upMemPro);
-			
+			if (dbpasswd.equals(upMemPro.getPassword())) {
+				x = sqlSession.update(namespace + ".up_memPage", upMemPro);
+			}
 		} finally {
 			sqlSession.commit();
 			sqlSession.close();
@@ -127,15 +127,15 @@ public class TeamMemberDBBeanMybatis {
 
 	
 	// 회원탈퇴
-	public int memDelete(String id, String passwd) throws Exception {
+	public int memDelete(String id, String password) throws Exception {
 		SqlSession sqlSession = mybatisConnector.sqlSession();
 		System.out.println("-------------memDelete");
 		HashMap map = new HashMap();
 		map.put("id", id);
 		int x = -1;
 		try {
-			String dbpasswd = (String) sqlSession.selectOne(namespace + ".memCheckPasswd", map);
-			if (dbpasswd.equals(passwd)) {
+			String idValue = sqlSession.selectOne(namespace + ".memCheckPasswd", map);
+			if (idValue.equals(password)) {
 				x = sqlSession.delete(namespace + ".memdelete", map);
 			}
 		} finally {

@@ -11,7 +11,7 @@
 
 <div id="login-page">
     <div class="container">
-      <form class="form-login" action="loginPro" name="loginform" method="post">
+      <form class="form-login" action="loginPro" name="loginform">
         <h2 class="form-login-heading">sign in now</h2>
         <div class="login-wrap">
         

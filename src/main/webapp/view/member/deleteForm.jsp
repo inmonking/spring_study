@@ -16,11 +16,11 @@
                       <div class="col-lg-8 col-lg-offset-2 detailed mt">
                         <h3 class="mb" align="center">회원탈퇴</h3>
                         <hr>
-                        <form class="form-horizontal"  action="${project }/member/deletePro" style="margin: 0 auto; width:400px;" method="post">
+                        <form class="form-horizontal"  action="deletePro" style="margin: 0 auto; width:400px;">
                           <div class="form-group">
                             <label class="col-lg-2 control-label" style="width: 100%;">비밀번호</label>
                             <div class="col-lg-6" style="width: 100%;">
-                              <input type="password"  name="password" class="form-control" required="required">
+                              <input type="password"  name="passwd" class="form-control" required="required">
                             </div>
                           </div>
                             <div class="col-lg-offset-2 col-lg-10" style="margin-left: 120px;">
@@ -29,7 +29,7 @@
                             </div>
                         </form>
                       </div>
-                      <!-- /col-lg-8 -->`
+                      <!-- /col-lg-8 -->
                     </div>
                     <!-- /row -->
                   </div>
