@@ -37,13 +37,13 @@ public class BootRunner {
 						"	CONSTRAINT team_member_pkey PRIMARY KEY (id)\r\n" + 
 						");";
 				map.put("create_query", sql);
-				sqlSession.selectOne(namespace +"createQuery", map);
+				sqlSession.selectOne(namespace +".createQuery", map);
 			}
 			tableName = "team_qna";
 			if((int)sqlSession.selectOne(namespace + ".findTable",tableName)<=0) {
 				Map<String, String> map = new HashMap<String, String>();
 				sql = "CREATE TABLE public.team_qna (\r\n" + 
-						"	num int8 NOT NULL,\r\n" + 
+						"	num serial primary key,\r\n" + 
 						"	cat_name varchar(20) NOT NULL,\r\n" + 
 						"	writer varchar(10) NOT NULL,\r\n" + 
 						"	subject varchar(50) NOT NULL,\r\n" + 
@@ -56,7 +56,7 @@ public class BootRunner {
 						"	\"content\" varchar(3000) NOT NULL\r\n" + 
 						");";
 				map.put("create_query", sql);
-				sqlSession.selectOne(namespace +"createQuery", map);
+				sqlSession.selectOne(namespace +".createQuery", map);
 			}
 		} finally {
 			sqlSession.close();

@@ -31,12 +31,25 @@
 		#{boardid}  order by ref desc, re_step) a ) where rnum between #{start}
 		and #{end}
 	</select> -->
-	
-	
+
+
 	<select id="QnAList" parameterType="hashmap" resultType="board">
-	select * from (select rownum  rnum, a.* from (select num, cat_name, writer,
-	subject, password, reg_date, readcount, ref, re_step, re_level, content
-	from team_qna order by ref desc, re_step) a ) where rnum between #{start} and #{end}
+		SELECT 
+			num,
+			cat_name,
+			writer,
+			subject,
+			password,
+			reg_date,
+			readcount,
+			ref,
+			re_step,
+			re_level,
+			content
+		FROM team_qna
+		ORDER BY ref DESC,re_step
+		limit #{start}
+		offset #{end}
 	</select>
 	
 	
@@ -87,15 +100,27 @@
 		insert into
 		board values
 		(#{num},#{boardid}
-		,#{writer},#{email},#{subject},#{passwd},sysdate,0,
+		,#{writer},#{email},#{subject},#{passwd},now(),0,
 		#{ref},#{re_step},#{re_level},#{content},#{ip}, #{filename},
 		#{filesize})
 	</insert> -->
 	
 	
 	<insert id="insertQnA_insert" parameterType="Board">
-	insert into team_QnA values(#{num}, #{cat_name}, #{writer}, #{subject}, 
-	#{password}, sysdate, 0, #{ref}, #{re_step}, #{re_level}, #{content})
+	insert into team_QnA(
+		cat_name
+		,writer
+		,subject
+		,password
+		,reg_date
+		,readcount
+		,ref
+		,re_step
+		,re_level
+		,content
+		)
+	 values(
+	 	 #{cat_name}, #{writer}, #{subject}, #{password}, now(), 0, #{ref}, #{re_step}, #{re_level}, #{content})
 	</insert>
 	
 	

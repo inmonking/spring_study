@@ -54,9 +54,11 @@ public class TeamBoardController {
 
 		// int currentPage =Integer.parseInt(pageNum);
 		int count = teamBoardDBBeanMybatis.sh_ReadCount();
-		int startRow = (currentPage - 1) * pageSize;
-		int endRow = currentPage * pageSize;
-		List qnaList = teamBoardDBBeanMybatis.QnAList(startRow, pageSize);
+//		int startRow = (currentPage - 1) * pageSize;
+//		int endRow = currentPage * pageSize;
+		int startRow = pageSize;
+		int endRow = (currentPage - 1) * pageSize;
+		List qnaList = teamBoardDBBeanMybatis.QnAList(startRow, endRow);
 		int number = count - ((currentPage - 1) * pageSize);
 
 		int bottomLine = 3; // 5 page
