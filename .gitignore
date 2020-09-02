@@ -6,3 +6,14 @@
 target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 target/m2e-wtp/web-resources/META-INF/maven/com.sist/wify/pom.properties
 target/m2e-wtp/web-resources/META-INF/maven/com.sist/wify/pom.xml
+target/classes/com/sist/wify/HomeController.class
+target/classes/controller/c_BoardController.class
+target/classes/controller/TeamBoardController.class
+target/classes/controller/TeamMemberController.class
+target/classes/model/c_BoardDataBean.class
+target/classes/model/TeamBoardDataBean.class
+target/classes/model/TeamMemberDataBean.class
+target/classes/mybatis/MyBatisConnector.class
+target/classes/service/c_BoardDBBeanMybatis.class
+target/classes/service/TeamBoardDBBeanMybatis.class
+target/classes/service/TeamMemberDBBeanMybatis.class
