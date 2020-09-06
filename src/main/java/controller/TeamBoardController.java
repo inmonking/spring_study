@@ -15,7 +15,7 @@ import model.TeamBoardDataBean;
 import service.TeamBoardDBBeanMybatis;
 
 @Controller
-@RequestMapping("/board/")
+@RequestMapping("board")
 public class TeamBoardController {
 	ModelAndView mv = new ModelAndView();
 

@@ -73,16 +73,17 @@ ${project = pageContext.request.contextPath ; ''}
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="index.html" class="logo"><b>DASH<span>IO</span></b></a>
+      <a href="index" class="logo"><b>LEE<span>HEE</span></b></a>
       <!--logo end-->
       <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
         <ul class="nav top-menu">
+
           <!-- settings start -->
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
               <i class="fa fa-tasks"></i>
-              <span class="badge bg-theme">4</span>
+              <span class="badge bg-theme">8</span>
               </a>
             <ul class="dropdown-menu extended tasks-bar">
               <div class="notify-arrow notify-arrow-green"></div>
@@ -147,6 +148,7 @@ ${project = pageContext.request.contextPath ; ''}
             </ul>
           </li>
           <!-- settings end -->
+          
           <!-- inbox dropdown start-->
           <li id="header_inbox_bar" class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
@@ -318,17 +320,23 @@ ${project = pageContext.request.contextPath ; ''}
           
           
           
-    
+    <!-- 사이드 메뉴 -->
           <li class="mt">
-            <a href="index.html">
-              <i class="fa fa-dashboard"></i>
-              <span>Dashboard</span>
+            <a href="<%=request.getContextPath()%>/board/list">
+              <!-- <i class="fa fa-dashboard"></i> -->
+              <span>qna</span>
+              </a>
+          </li>	
+          <li class="sub-menu">
+            <a href="<%=request.getContextPath()%>/event/roulette">
+              <!-- <i class="fa fa-dashboard"></i> -->
+              <span>룰렛만들기</span>
               </a>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
-              <i class="fa fa-desktop"></i>
-              <span>UI Elements</span>
+              <!-- <i class="fa fa-desktop"></i> -->
+              <span>보류</span>
               </a>
             <ul class="sub">
               <li><a href="general.html">General</a></li>
@@ -337,98 +345,7 @@ ${project = pageContext.request.contextPath ; ''}
               <li><a href="font_awesome.html">Font Awesome</a></li>
             </ul>
           </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-cogs"></i>
-              <span>Components</span>
-              </a>
-            <ul class="sub">
-              <li><a href="grids.html">Grids</a></li>
-              <li><a href="calendar.html">Calendar</a></li>
-              <li><a href="gallery.html">Gallery</a></li>
-              <li><a href="todo_list.html">Todo List</a></li>
-              <li><a href="dropzone.html">Dropzone File Upload</a></li>
-              <li><a href="inline_editor.html">Inline Editor</a></li>
-              <li><a href="file_upload.html">Multiple File Upload</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Extra Pages</span>
-              </a>
-            <ul class="sub">
-              <li class="active"><a href="blank.html">Blank Page</a></li>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="lock_screen.html">Lock Screen</a></li>
-              <li><a href="profile.html">Profile</a></li>
-              <li><a href="invoice.html">Invoice</a></li>
-              <li><a href="pricing_table.html">Pricing Table</a></li>
-              <li><a href="faq.html">FAQ</a></li>
-              <li><a href="404.html">404 Error</a></li>
-              <li><a href="500.html">500 Error</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-tasks"></i>
-              <span>Forms</span>
-              </a>
-            <ul class="sub">
-              <li><a href="form_component.html">Form Components</a></li>
-              <li><a href="advanced_form_components.html">Advanced Components</a></li>
-              <li><a href="form_validation.html">Form Validation</a></li>
-              <li><a href="contactform.html">Contact Form</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-th"></i>
-              <span>Data Tables</span>
-              </a>
-            <ul class="sub">
-              <li><a href="basic_table.html">Basic Table</a></li>
-              <li><a href="responsive_table.html">Responsive Table</a></li>
-              <li><a href="advanced_table.html">Advanced Table</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="inbox.html">
-              <i class="fa fa-envelope"></i>
-              <span>Mail </span>
-              <span class="label label-theme pull-right mail-info">2</span>
-              </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class=" fa fa-bar-chart-o"></i>
-              <span>Charts</span>
-              </a>
-            <ul class="sub">
-              <li><a href="morris.html">Morris</a></li>
-              <li><a href="chartjs.html">Chartjs</a></li>
-              <li><a href="flot_chart.html">Flot Charts</a></li>
-              <li><a href="xchart.html">xChart</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-comments-o"></i>
-              <span>Chat Room</span>
-              </a>
-            <ul class="sub">
-              <li><a href="lobby.html">Lobby</a></li>
-              <li><a href="chat_room.html"> Chat Room</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="google_maps.html">
-              <i class="fa fa-map-marker"></i>
-              <span>Google Maps </span>
-              </a>
-          </li>
-        </ul>
-        <!-- sidebar menu end-->
+ 
       </div>
     </aside>
     <!--sidebar end-->

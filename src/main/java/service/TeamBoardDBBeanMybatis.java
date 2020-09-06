@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import dao.BoardDao;
 import model.TeamBoardDataBean;
 import model.c_BoardDataBean;
 import mybatis.MyBatisConnector;
@@ -17,16 +18,14 @@ public class TeamBoardDBBeanMybatis {
 
 	@Autowired
 	public MyBatisConnector mybatisConnector;
-
+	
+	@Autowired
+	public BoardDao bDao;
+	
 	// 총 게시글 카운트
 	public int sh_ReadCount() throws Exception {
-		SqlSession sqlSession = mybatisConnector.sqlSession();
 		System.out.println("--------------sh_ReadCount");
-		try {
-			return sqlSession.selectOne(namespace + ".sh_ReadCount");
-		} finally {
-			sqlSession.close();
-		}
+		return bDao.sh_ReadCount();
 	}
 
 	// 글 등록하면 카운트
