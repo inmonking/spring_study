@@ -16,10 +16,12 @@
 		<environment id="development">
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
-				<property name="driver" value="org.postgresql.Driver" />
-				<property name="url" value="jdbc:postgresql://127.0.0.1:5432/study" />
-				<property name="username" value="scott" />
-				<property name="password" value="1111" />
+<!-- 				<property name="driver" value="org.postgresql.Driver" />
+				<property name="url" value="jdbc:postgresql://127.0.0.1:5432/study" /> -->
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+	            <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+				<property name="username" value="study" />
+				<property name="password" value="1234" />
 			</dataSource>
 		</environment>
 	</environments>

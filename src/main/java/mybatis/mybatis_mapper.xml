@@ -241,13 +241,20 @@
 	<!-- 상희 끝 -->
 	
 	 <select id="findTable" parameterType="String" resultType="int">
+	      <!-- 
+	      postgres
 	      SELECT
 	         count(*) AS CNT
 	      FROM
 	         information_schema.tables
 	      WHERE
 	         table_schema='public' 
-	         AND table_name=#{table_name}
+	         AND table_name=#{table_name} -->
+	      SELECT
+	      	COUNT(*) AS CNT
+	      FROM 
+	      	TABS
+	      WHERE TABLE_NAME = upper(#{table_name})
 	   </select>
 	   
 	   <select id="createQuery" parameterType="map">
